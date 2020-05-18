@@ -1,0 +1,68 @@
+@font-face {
+    font-family: 'mouse-300';
+    src: url("../fonts/Amaranth-Regular.ttf") format("truetype"); }
+  @font-face {
+    font-family: 'mouse-500';
+    src: url("../fonts/Amaranth-Bold.ttf") format("truetype"); }
+  /* ===================================== Basic CSS ================================== */
+  * {
+    margin: 0px;
+    padding: 0px;
+    list-style: none; }
+/* svg { 
+    border: 1px solid #4f0ccc; 
+} */
+h1, h2, h3, h4, h5, h6 ,p{
+    font-family: "mouse-500", Arial, Helvetica, sans-serif;
+ }
+
+ #header {
+    background: #035716;
+  }
+.main-content{
+    margin: 0 auto;
+}
+.main-content h2{
+    width: 100%;
+    font-size: 48px;
+    letter-spacing: 1.60px;
+    text-align: left;
+}
+.main-content .header-desc{
+    width: 100%;
+    font-size: 20px;
+    letter-spacing: 1.50px;
+    text-align: left;
+}
+.main-content span{
+    color: #035716;
+}
+.main-content h4{
+    width: 100%;
+    font-size: 28px;
+    letter-spacing: 1.60px;
+    text-align: left;
+}
+.main-content .about{
+    width: 100%;
+    font-size: 12px;
+    letter-spacing: 0.60px;
+    text-align: left;
+}
+.fas{
+    margin-right: 8px;
+}
+.mapDiv path {
+    fill: #41692a;
+    stroke: #052c3b;
+    stroke-width:4px;
+    transition: fill 0.3s;
+    cursor: pointer;
+}
+ /* .mapDiv path:hover {
+    fill:#000;
+} */
+.addCss{
+    fill: #e63f3f !important;
+    transition: fill 0.6s !important;
+}

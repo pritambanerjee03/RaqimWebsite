@@ -59,10 +59,89 @@ h1, h2, h3, h4, h5, h6 ,p{
     transition: fill 0.3s;
     cursor: pointer;
 }
- /* .mapDiv path:hover {
-    fill:#000;
-} */
+ #chatBotSection{
+    display: none;
+ }
+
 .addCss{
     fill: #e63f3f !important;
     transition: fill 0.6s !important;
+}
+/*From CHat PHP project */
+
+
+form, p, span {
+    margin:0;
+    padding:0; }
+.chatrow{
+    margin:2px !important;
+    display:flex;
+    flex-direction:row;
+    justify-content: space-around;
+
+}  
+input { font:12px arial; }
+  
+a {
+    color:#0000FF;
+    text-decoration:none; }
+  
+    a:hover { text-decoration:underline; }
+  
+#wrapper, #loginform {
+    margin:0 auto;
+    padding-bottom:25px;
+    background:#EBF4FB;
+    
+    border:1px solid #41692a;
+    border-radius: 5px; }
+  
+#loginform { padding-top:18px; }
+  
+#loginform p { margin: 5px; }
+  
+#chatbox {
+    text-align:left;
+    margin:0 auto;
+    margin-bottom:25px;
+    padding:10px;
+    background:#fff;
+    height:270px;
+    
+    border:1px solid #41692a;
+    overflow:auto; }
+#messagebox {
+    text-align:left;
+    margin:0 auto;
+    margin-bottom:25px;
+    padding:10px;
+    background:#fff;
+    height:270px;
+    
+    border:1px solid #41692a;
+    overflow:auto; }
+
+#submit { width: 60px; }
+  
+.error { color: #ff0000; }
+  
+#menu { padding:12.5px 25px 12.5px 25px; }
+  
+.welcome { float:left; }
+  
+.logout { float:right; }
+  
+.msgln { margin:0 0 2px 0; }
+
+.leftWrap{
+    width: 380px;
+}
+.leftChat{
+    width: 350px;
+}
+.rightWrap{
+    width:445px;
+}
+.rightChat{
+    width:430px;
 }

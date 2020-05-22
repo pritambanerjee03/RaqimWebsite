@@ -36,14 +36,14 @@
     <div class="container d-flex">
 
       <div class="logo mr-auto">
-        <h1 class="text-light"><a href="index.html">RaQim</a></h1>
+        <h1 class="text-light"><a href="index.php">RaQim</a></h1>
       </div>
 
       <nav class="nav-menu d-none d-lg-block">
         <ul>
-          <li class="active"><a href="./index.html">Home</a></li>
-          <li><a href="./login.html">Login</a></li>
-          <li><a href="./signup.html">Register</a></li>
+          <li class="active"><a href="./index.php">Home</a></li>
+          <li><a href="./login.php">Login</a></li>
+          <li><a href="./signup.php">Register</a></li>
         </ul>
       </nav>
 
@@ -60,7 +60,7 @@
           <div>
             <h1>We welcome you</h1>
             <h2>Lorem ipsum dolor sit amet, tota senserit percipitur ius ut, usu et fastidii forensibus voluptatibus. His ei nihil feugait</h2>
-            <a href="./home.html" class="download-btn"> <i class="bx bxs-bell-ring bx-tada"></i> JOIN US</a>
+            <a href="./home.php" class="download-btn"> <i class="bx bxs-bell-ring bx-tada"></i> JOIN US</a>
           </div>
         </div>
         <!-- <div class="col-lg-6 d-lg-flex flex-lg-column align-items-stretch order-1 order-lg-2 hero-img" data-aos="fade-up">

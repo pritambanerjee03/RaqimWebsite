@@ -36,14 +36,14 @@
     <div class="container d-flex">
 
       <div class="logo mr-auto">
-        <h1 class="text-light"><a href="index.html">RaQim</a></h1>
+        <h1 class="text-light"><a href="index.php">RaQim</a></h1>
       </div>
 
       <nav class="nav-menu d-none d-lg-block">
         <ul>
-          <li><a href="./index.html">Home</a></li>
-          <li class="active"><a href="./login.html">Login</a></li>
-          <li><a href="./signup.html">Register</a></li>
+          <li><a href="./index.php">Home</a></li>
+          <li class="active"><a href="./login.php">Login</a></li>
+          <li><a href="./signup.php">Register</a></li>
 <!-- 
           <li class="get-started"><a href="#features">Get Started</a></li> -->
         </ul>
@@ -79,7 +79,7 @@
                          forgot password ?</p>
                          <button class="btn btn-success">Login</button>
                      </form>
-                       <p class="no-c">Don't have an account? <a href="signup.html">Create an Account</a></p>
+                       <p class="no-c">Don't have an account? <a href="signup.php">Create an Account</a></p>
                    </div>
                </div>    
           </div>

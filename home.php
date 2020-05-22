@@ -1,3 +1,28 @@
+<?php
+session_start ();
+date_default_timezone_set('Asia/Kolkata');// change according timezone
+
+if (isset ( $_POST ['enter'] )) {
+    if ($_POST ['name'] != "") {
+        $_SESSION ['name'] = stripslashes ( htmlspecialchars ( $_POST ['name'] ) );
+        $cb = fopen ( "log.html", 'a' );
+        fwrite ( $cb, "<div class='msgln'><i>User " . $_SESSION ['name'] . " has joined the chat session.</i><br></div>" );
+        fclose ( $cb );
+    } else {
+        echo '<span class="error">Please Enter a Name</span>';
+    }
+}
+ 
+if (isset ( $_GET ['logout'] )) {
+    $cb = fopen ( "log.html", 'a' );
+    fwrite ( $cb, "<div class='msgln'><i>User " . $_SESSION ['name'] . " has left the chat session.</i><br></div>" );
+    fclose ( $cb );
+    session_destroy ();
+    header ( "Location: home.php" );
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -38,14 +63,14 @@
     <div class="container d-flex">
 
       <div class="logo mr-auto">
-        <h1 class="text-light"><a href="index.html">RaQim</a></h1>
+        <h1 class="text-light"><a href="index.php">RaQim</a></h1>
       </div>
 
       <nav class="nav-menu d-none d-lg-block">
         <ul>
-          <li ><a href="./index.html">Home</a></li>
+          <li ><a href="./index.php">Home</a></li>
 
-          <li class="get-started"><a href="#logout.html">Log Out</a></li>
+          <li class="get-started"><a href="#logout.php">Log Out</a></li>
         </ul>
       </nav><!-- .nav-menu -->
 
@@ -61,7 +86,18 @@
       </div>
       <div class="row">
           <div class="col-lg-4 col-md-4 col-sm-12 order-2 order-md-1" >
-            hello pritam this is for contacts
+           
+
+             <div id="wrapper" class="leftWrap">
+                    <div id="menu">
+                    <h1>Message Details</h1><hr>
+                      
+                    <div style="clear: both"></div>
+                    </div>
+                    <div id="messagebox" class="leftChat"></div>
+                  </div>
+
+
           </div>
           <div class="col-lg-4 col-md-4 col-sm-12 mapDiv order-1 order-md-2" data-aos="fade-up"  >
               <svg version="1.2" viewbox="0 0 500 1100" xmlns="http://www.w3.org/2000/svg">
@@ -72,18 +108,7 @@
                       id="Bizerte" onclick="myFunction(this.id)"/>
                   </a>
                   
-                  <a xlink:title="Medenine">
-                      <path 
-                      d="M 407.90368,516.7392 L 407.90368,520.27474 L 407.19657,522.39606 L 406.48947,526.6387 L 406.48947,530.88134 L 407.19657,533.70977 L 409.31789,537.2453 L 413.56053,538.65951 L 417.09607,537.2453 L 417.80317,535.12398 L 420.6316,535.83109 L 422.04581,536.53819 L 422.75292,539.36662 L 424.16714,544.31637 L 424.16714,546.43769 L 425.58135,547.8519 L 426.99556,547.14479 L 428.40978,542.19505 L 434.77374,537.95241 L 439.72348,534.41687 L 443.96612,530.17423 L 446.08745,529.46713 L 448.91587,527.34581 L 449.62298,524.51738 L 447.50166,522.39606 L 444.67323,520.98184 L 443.25902,519.56763 L 436.18795,516.0321 L 433.35952,513.91078 L 424.87424,513.20367 L 414.97475,511.78946 L 412.14632,512.49656 L 407.90368,516.7392 z "
-                      id="Medenine1"/>
-                  </a> 
-                      
-                  <a xlink:title="Sfax">
-                      <path 
-                      d="M 468.71486,378.85338 L 464.47222,385.92445 L 460.93669,388.75288 L 459.52247,392.99552 L 455.98694,397.23816 L 456.69405,399.35948 L 458.81537,398.65237 L 462.3509,396.53105 L 469.42197,391.5813 L 474.37172,388.04577 L 477.20014,384.51024 L 478.61436,382.38891 L 478.61436,380.26759 L 476.49304,378.85338 L 472.9575,378.14627 L 468.71486,378.85338 z "
-                      id="Sfax1"/>
-                  </a>
-                      
+
                   <a xlink:title="Kasserine">
                       <path 
                       d="M 115.875,389.46875 L 122.21875,391.59375 L 131.4375,394.40625 L 137.78125,397.9375 L 143.4375,398.65625 L 149.8125,399.375 L 156.875,397.9375 L 172.4375,391.59375 L 190.125,383.09375 L 200,376.03125 L 204.96875,368.25 L 207.09375,361.875 L 211.3125,358.34375 L 212.03125,354.09375 L 216.28125,351.96875 L 225.46875,349.15625 L 231.84375,344.90625 L 233.96875,335 L 233.96875,327.25 L 232.53125,323 L 229.71875,320.875 L 227.59375,319.46875 L 225.46875,318.75 L 221.9375,317.34375 L 220.53125,313.8125 L 220.53125,308.84375 L 224.0625,302.5 L 229,299.65625 L 229.71875,296.84375 L 230.40625,294 L 233.96875,291.875 L 238.1875,289.0625 L 240.3125,286.21875 L 240.3125,280.5625 L 237.5,277.03125 L 232.53125,273.5 L 226.1875,269.25 L 220.53125,265.71875 L 217.6875,263.59375 L 213.4375,262.1875 L 212.75,261.46875 L 207.78125,260.0625 L 204.96875,257.21875 L 204.96875,255.8125 L 202.125,251.5625 L 200,250.875 L 197.90625,250.875 L 191.53125,249.4375 L 184.46875,244.5 L 182.34375,243.09375 L 175.25,240.96875 L 170.3125,239.5625 L 167.5,238.84375 L 164.65625,238.84375 L 160.40625,238.84375 L 159,242.375 L 156.1875,247.34375 L 156.1875,251.5625 L 156.1875,253.6875 L 154.75,256.53125 L 151.21875,258.65625 L 148.40625,258.65625 L 144.875,258.65625 L 141.3125,255.125 L 139.1875,253.6875 L 134.25,254.40625 L 131.4375,255.8125 L 128.59375,258.65625 L 127.875,260.0625 L 123.65625,261.46875 L 122.5625,261.59375 L 121.53125,274.90625 L 120.125,286.21875 L 118,295.40625 L 118,301.78125 L 119.40625,307.4375 L 122.21875,313.09375 L 128.59375,323.6875 L 129.3125,325.125 L 128.59375,326.53125 L 125.78125,328.65625 L 122.21875,332.90625 L 118,340.65625 L 115.875,348.4375 L 115.15625,360.46875 L 113.75,368.96875 L 113.75,380.96875 L 114.46875,383.09375 L 115.15625,386.625 L 115.875,388.75 L 115.875,389.46875 z "
@@ -224,7 +249,65 @@
               </svg> 
           </div>
           <div class="col-lg-4 col-md-4 col-sm-12  order-3 order-md-3" id="chatBotSection">
-            hello pritam this is a sample one for chatbot
+            
+                  <div id="wrapper" class="rightWrap">
+                    <div id="menu">
+                    <h1>Contact Details</h1><hr>
+                      
+                    <div style="clear: both"></div>
+                    </div>
+                    <div id="chatbox" class="rightChat">
+                    <?php
+                      if (file_exists ( "log.html" ) && filesize ( "log.html" ) > 0) {
+                      $handle = fopen ( "log.html", "r" );
+                      $contents = fread ( $handle, filesize ( "log.html" ) );
+                      fclose ( $handle );
+
+                      echo $contents;
+                      ?><script>
+                  tmp=document.getElementsByClassName('msgln');
+                  tmp[tmp["length"]-1].scrollIntoView();
+                  </script>
+                  </div>
+                  <form name="message" action="">
+                  <div class="row chatrow">
+                    <input name="usermsg" class="form-control" style="max-width:70%;" type="text" id="usermsg" placeholder="Create A Message" />
+                    <i class="bx bxs-camera" style="font-size:35px; padding-top:2.5px; cursor: pointer;" onclick="imgfun()"></i>
+                    <input name="submitmsg" class="btn btn-outline-success" style="margin-top: -1px;" type="submit" id="submitmsg" value="Send" />
+                    </div>
+                    </form>
+                    <?php
+                  if(isset($_POST['submit'])){
+                  $callerid=$_SESSION['name'];
+                  $picture=$_FILES["Attachment"]["name"];
+                    
+                      if($picture!=NULL)
+                      {
+                  //for getting product id
+                    $dir="img/$callerid";
+                  if(!is_dir($dir)){
+                      mkdir("img/".$callerid);
+                    }
+                    move_uploaded_file($_FILES["Attachment"]["tmp_name"],"img/$callerid/".$_FILES["Attachment"]["name"]);
+                  $spath="http://localhost/simplechat/img/$callerid/$picture";
+                  }    
+                  $cb = fopen("log.html", 'a');
+                      fwrite($cb, "<div class='msgln'>(".date("g:i A").") <b>".$callerid."</b>:<img src='".$spath."' height='100' width='100'><br></div>");
+                      fclose($cb);
+                  ?><script>
+                  tmp=document.getElementsByClassName('msgln');
+                  tmp[tmp["length"]-1].scrollIntoView();
+                  </script>
+                  <?php
+                  } ?>
+
+                  <form method="post" enctype="multipart/form-data">
+                  <input type="file" name="Attachment" id="Attachment" style="display:none;" accept=".jpg,.jpeg,.png" class="span8 tip">
+                  <button type="submit" name="submit" id="button" style="display:none;">Upload</button>
+                  </form>
+
+                  </div>
+
           </div>
       </div>
   </div>
@@ -252,27 +335,90 @@
   <script src="assets/vendor/jquery/jquery.min.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
   <script src="assets/vendor/owl.carousel/owl.carousel.min.js"></script>
   <script src="assets/vendor/venobox/venobox.min.js"></script>
   <script src="assets/vendor/aos/aos.js"></script>
 
+ 
+
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+   <script type="text/javascript" src="js/jquery.min.js"></script>
   <script>
     function myFunction(stateId){
+
+        var statePathName = stateId;
         var x = document.getElementsByClassName("addCss");
         if(x[0]!=null){
             x[0].classList.remove("addCss");
         }
         var elmnt = document.getElementById(stateId);
         elmnt.classList.add("addCss");
+
+
         var text = document.getElementById("stateName");
         text.innerHTML= 'You have selected <span>'+stateId+'</span> state';
+
+        var chatElmnt = document.getElementById("chatBotSection");
+        chatElmnt.style.display="block";
 
         $('html, body').animate({ scrollTop: $("#chatBotSection").offset().top }, 2000, 'easeInOutExpo');
     }
 </script>
+
+        <?php
+        //assign session variable to stateId(Name)
+        $_SESSION["stateName"] = '<script> document.write(statePathName) </script>';
+        echo $_SESSION["stateName"];
+
+        ?>
+
+<!-- Script tag for chat php-->
+
+<script type="text/javascript">
+$("#Attachment").change(function(){
+            document.getElementById("button").click();
+
+        });
+
+function imgfun()
+{
+document.getElementById("Attachment").click();
+}
+$(document).ready(function(){
+});
+$(document).ready(function(){
+    $("#exit").click(function(){
+        var exit = confirm("Are You Sure You Want To Leave This Page?");
+        if(exit==true){window.location = 'home.php?logout=true';}     
+    });
+});
+$("#submitmsg").click(function(){
+        var clientmsg = $("#usermsg").val();
+        $.post("post.php", {text: clientmsg});             
+        $("#usermsg").attr("value", "");
+        loadLog;
+    return false;
+});
+function loadLog(){    
+    var oldscrollHeight = $("#chatbox").attr("scrollHeight") - 20;
+    $.ajax({
+        url: "log.html",
+        cache: false,
+        success: function(html){       
+            $("#chatbox").html(html);       
+            var newscrollHeight = $("#chatbox").attr("scrollHeight") - 20;
+            if(newscrollHeight > oldscrollHeight){
+                $("#chatbox").animate({ scrollTop: newscrollHeight }, 'normal');
+            }              
+        },
+    });
+}
+setInterval (loadLog, 00);
+</script> 
+<?php
+}
+?>
 
 </body>
 </html>
